@@ -1,12 +1,4 @@
 <?php
-/**
- *
- * TestCurl.php
- *
- * Author: jinxing.liu
- * Create: 2019/11/12 16:15
- * Editor: created by PhpStorm
- */
 
 namespace Tests;
 
@@ -140,7 +132,8 @@ class TestCurl extends TestCase
         // 需要请求地址响应为空、curl_error 不存在
         $curl->get('http://localhost/index.php')->whenRetry(2, function ($ch) {
             /* @var $ch Curl */
-            return empty($ch->getBody());
+            $body = $ch->getBody();
+            return empty($body);
         }, 0);
         $this->assertEquals($curl->getRetryNumber(), 2);
         $this->assertEmpty($curl->getError());
