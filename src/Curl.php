@@ -351,8 +351,9 @@ class Curl
         }
 
         // 初始化CURL
+        $method                               = strtoupper($method);
         $this->ch                             = curl_init();            // CURL
-        $this->options[CURLOPT_CUSTOMREQUEST] = strtoupper($method);    // 请求方法
+        $this->options[CURLOPT_CUSTOMREQUEST] = $method;                // 请求方法
 
         // 存在数据
         if ($data) {
