@@ -114,9 +114,10 @@ $curl->setTimeout(30)
 
 |方法名称    |返回值| 方法说明 |
 |---------------|-------------|----------|
-|`delete($url)`|`mixed`|发送delete请求|
-|`put($url, $data)`|`mixed`|发送put请求|
-|`request($url, $method = 'GET', $data = '')`|`mixed`|发送请求|
+|`delete($url)`|`Curl`|发送delete请求|
+|`put($url, $data)`|`Curl`|发送put请求|
+|`request($url, $method = 'GET', $data = '')`|`Curl`|发送请求|
+|`reset()`|`Curl`|重置Curl类|
 |`getBody()`|`mixed`|获取请求响应结果|
 |`getError()`|`int`|获取curl错误码|
 |`getErrorInfo()`|`string`|获取curl错误信息|
