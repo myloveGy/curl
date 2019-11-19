@@ -1,7 +1,7 @@
 Curl 
 ====
 
-工具库只包含一个`Curl`处理类，不依赖其他库
+只包含一个`Curl`处理类，不依赖其他库
 
 ## 安装
 
@@ -67,7 +67,7 @@ $response = (new Curl())->get('http://localhost')->retry(2, false, 0)->getBody()
 
 #### 4. 初始化设置属性
 
-初始话设置属性
+初始化设置属性
 ```php
 $curl = new Curl([
     'timeout' => 30,    // 设置超时时间
