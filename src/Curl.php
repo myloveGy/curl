@@ -241,21 +241,21 @@ class Curl
     /**
      * 重试次数 $this->get()->retry(2)
      *
-     * @param integer $num        重试次数
-     * @param bool    $emptyRetry 响应结果为空是否重试
-     * @param int     $seconds    响应错误暂停多少秒
+     * @param integer $num          重试次数
+     * @param bool    $emptyRetry   响应结果为空是否重试
+     * @param int     $milliseconds 响应错误暂停多少毫秒
      *
      * @return $this
      */
-    public function retry($num, $emptyRetry = false, $seconds = 1)
+    public function retry($num, $emptyRetry = false, $milliseconds = 0)
     {
         $this->retryNumber = 0;
         // 存在错误或者响应为空也要重试，并且重试次数 > 0, 重新发送请求
         while (($this->error || ($emptyRetry && empty($this->body))) && $this->retryNumber < $num) {
 
             // 设置了暂停时间
-            if ($seconds > 0) {
-                sleep($seconds);
+            if ($milliseconds > 0) {
+                usleep($milliseconds * 1000);
             }
 
             // 重新发送请求
@@ -269,13 +269,13 @@ class Curl
     /**
      * 自定义重试条件重试
      *
-     * @param int      $num     重试次数
-     * @param callable $when    自定义调用结构
-     * @param int      $seconds 每次重试需要暂停时间秒数
+     * @param int      $num          重试次数
+     * @param callable $when         自定义调用结构
+     * @param int      $milliseconds 响应错误暂停多少毫秒
      *
      * @return $this
      */
-    public function whenRetry($num, $when, $seconds = 1)
+    public function whenRetry($num, $when, $milliseconds = 0)
     {
         $this->retryNumber = 0;
 
@@ -288,8 +288,8 @@ class Curl
         while ($when($this) && $this->retryNumber < $num) {
 
             // 设置了暂停时间
-            if ($seconds > 0) {
-                sleep($seconds);
+            if ($milliseconds > 0) {
+                sleep($milliseconds * 1000);
             }
 
             // 重新发送请求
