@@ -8,7 +8,7 @@ Curl
 使用composer安装
 
 ```bash
-composer require jinxing/curl:dev-master
+composer require jinxing/curl
 ```
 
 ## 使用说明
@@ -33,11 +33,13 @@ $response = $curl->getBody();
 
 #### 3. 重试
 
+>第三个参数设置间隔时间、以毫秒计算、默认为0
+
 ##### 1. 当存在curl错误时候，重试2次, 隔1秒重试1次
 
 ```php
 $curl = new Curl();
-$curl->get('http://localhost/', ['username' => 'test'])->retry(2);
+$curl->get('http://localhost/', ['username' => 'test'])->retry(2, false, 1000);
 $response = $curl->getBody();
 ```
 
@@ -45,12 +47,12 @@ $response = $curl->getBody();
 
 ```php
 $curl = new Curl();
-$curl->get('http://localhost/', ['username' => 'test'])->retry(2, true, 1);
+$curl->get('http://localhost/', ['username' => 'test'])->retry(2, true, 1000);
 $response = $curl->getBody();
 ```
 ##### 3. 指定条件进行重试
 
-当存在错误的时候重试2次、隔1秒重试1次
+当存在错误的时候重试2次
 ```php
 $curl = new Curl();
 $curl->get('http://localhost/', ['username' => 'test'])->whenRetry(2, function ($ch) {
@@ -62,7 +64,7 @@ $response = $curl->getBody();
 
 ##### 4. 不需要暂停等待(没有间隔时间)
 ```php
-$response = (new Curl())->get('http://localhost')->retry(2, false, 0)->getBody();
+$response = (new Curl())->get('http://localhost')->retry(2)->getBody();
 ```
 
 #### 4. 初始化设置属性
@@ -93,7 +95,7 @@ $curl = new Curl([
     'curlOptions' => [
         CURLOPT_TIMEOUT => 50,
     ],
-])
+]);
 ```
 
 使用链式调用
