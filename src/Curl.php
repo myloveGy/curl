@@ -289,7 +289,7 @@ class Curl
 
             // 设置了暂停时间
             if ($milliseconds > 0) {
-                sleep($milliseconds * 1000);
+                usleep($milliseconds * 1000);
             }
 
             // 重新发送请求
