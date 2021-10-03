@@ -1,0 +1,41 @@
+{
+  "name": "jinxing/curl",
+  "description": "Curl",
+  "keywords": [
+    "php",
+    "curl"
+  ],
+  "license": "BSD-3-Clause",
+  "minimum-stability": "stable",
+  "support": {
+    "issues": "https://github.com/myloveGy/curl/issues",
+    "source": "https://github.com/myloveGy/curl"
+  },
+  "authors": [
+    {
+      "name": "jinxing.liu",
+      "email": "jinxing.liu@qq.com",
+      "homepage": "https://mylovegy.github.io/blog/"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "ext-json": "*",
+    "ext-curl": "*",
+    "ext-simplexml": "*",
+    "ext-libxml": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "jinxing\\curl\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
+}

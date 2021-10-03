@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.2/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         forceCoversAnnotation="true"
+         beStrictAboutCoversAnnotation="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         verbose="false">
+    <testsuites>
+        <testsuite name="default">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-clover" target="./tests/coverage/coverage.xml"/>
+        <log type="coverage-html" target="./tests/coverage/html" lowUpperBound="50" highLowerBound="80"/>
+        <log type="coverage-text" target="./cover.txt" showUncoveredFiles="false"/>
+        <log type="junit" target="./tests/coverage/logfile.xml"/>
+        <log type="testdox-html" target="./tests/coverage/testdox.html"/>
+        <log type="testdox-text" target="./tests/coverage/testdox.txt"/>
+    </logging>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <ini name="date.timezone" value="Asia/Shanghai"/>
+    </php>
+</phpunit>
